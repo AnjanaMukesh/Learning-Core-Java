@@ -10,6 +10,7 @@ public class Bird extends Animal{
 	public void move(int distance){
 		
 		System.out.println("Bird is moving " +distance+ " distance.");
+		System.out.println(" ");
 		
 	}
 	
