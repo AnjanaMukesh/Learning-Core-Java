@@ -7,14 +7,14 @@ class Marker {
 	final String BRAND;
 	String color;
 	private double price;
-	int inkQty;
+	
 	public static String category="Stationary";
 
 	public Marker() {
 		BRAND = "Camlin";
 		color = "blue";
 		price = 25.00;
-		inkQty=256;
+		
 		
 	}
 	
