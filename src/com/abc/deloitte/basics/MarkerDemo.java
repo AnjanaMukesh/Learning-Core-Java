@@ -1,4 +1,5 @@
 package com.abc.deloitte.basics;
+
 import java.util.Date;
 
 public class MarkerDemo {
@@ -21,7 +22,7 @@ public class MarkerDemo {
 		m3 = new Marker(40.00, "Red", "Reynolds");
 		System.out.println(m3.BRAND);
 		System.out.println(m3.getPrice());
-		System.out.println(m3.color);
+		// System.out.println(m3.color);
 		m3.setPrice(-10.0);
 		System.out.println(m3.getPrice());
 		// swap function
@@ -34,7 +35,6 @@ public class MarkerDemo {
 		m1.write("Hello");
 		m1.write(200);
 		m1.write(35.00);
-		
 
 	}
 
@@ -66,24 +66,51 @@ public class MarkerDemo {
 
 		}
 	}
-	public static void main(String[] args){
-	
-	Marker m1=new Marker();
-	Date d1=new Date();
-	System.out.println(m1);
-	System.out.println(d1);
-	
-	System.out.println(m1.toString());
-	System.out.println(d1.toString());
-	
-	Marker m3=new Marker();
-	
-	System.out.println(m3.getPrice());
-	m3.setPrice(56.0);
-	System.out.println(m3.getPrice());
-	System.out.println(m3.category);
-	m3.setCategory("Pens");
-	System.out.println(m3.category);
+
+	public static void main3(String[] args) {
+
+		Marker m1 = new Marker();
+		Date d1 = new Date();
+		System.out.println(m1);
+		System.out.println(d1);
+
+		System.out.println(m1.toString());
+		System.out.println(d1.toString());
+
+		Marker m3 = new Marker();
+
+		System.out.println(m3.getPrice());
+		m3.setPrice(56.0);
+		System.out.println(m3.getPrice());
+		System.out.println(m3.category);
+		m3.setCategory("Pens");
+		System.out.println(m3.category);
+	}
+
+	public static void main(String[] args) {
+		// Exception handling
+
+		Marker m1 = new Marker();
+		try {
+			m1.setPrice(45.0);
+			System.out.println(m1.getPrice());
+
+			m1.setPrice(-80.0);
+			System.out.println(m1.getPrice());
+		}
+
+		catch (IllegalArgumentException i) {
+			System.out.println(i);
+		}
+
+		Marker m = new Marker(25, "Camlin", Marker.GREEN);
+		System.out.println(m.getColor());
+		m.setColor(Marker.RED);
+		System.out.println(m.getColor());
+
+		m.setColor("Brown");
+		System.out.println(m.getColor());
+
 	}
 
 }
