@@ -1,6 +1,6 @@
 package com.abc.deloitte.basics;
 
-class Marker {
+public class Marker {
 
 	final String BRAND;
 	private String color;
@@ -42,6 +42,10 @@ class Marker {
 		color = c;
 		price = p;
 
+	}
+
+	public String toString() {
+		return "Marker[Brand: " + BRAND + "Color: " + color + "Price: " + price;
 	}
 
 	public double getPrice() { // accessor method(getter method)

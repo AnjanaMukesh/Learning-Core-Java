@@ -20,9 +20,11 @@ public class BookDemo {
 			c = in.nextInt();
 			switch (c) {
 			case 1:
-				b1.getBook();
-				b2.getBook();
-				break;
+				b1.getTITLE();
+				b1.getAUTHOR();
+				b1.getNo_of_pages();
+				b1.getPrice();
+				b1.getCur_page();
 
 			case 2:
 				b1.open();

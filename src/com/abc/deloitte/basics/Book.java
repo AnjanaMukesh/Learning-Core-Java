@@ -17,18 +17,55 @@ public class Book {
 		price = pr;
 	}
 
-	public void getBook() {
-		System.out.println("Title:" + TITLE);
-		System.out.println("Author:" + AUTHOR);
-		System.out.println("Publisher:" + publisher);
-		System.out.println("No of pages:" + no_of_pages);
-		System.out.println("Current page:" + cur_page);
+	public String getPublisher() {
+		return publisher;
+	}
 
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+
+	public int getNo_of_pages() {
+		return no_of_pages;
+	}
+
+	public void setNo_of_pages(int no_of_pages) {
+		this.no_of_pages = no_of_pages;
+	}
+
+	public int getCur_page() {
+		return cur_page;
+	}
+
+	public void setCur_page(int cur_page) {
+		this.cur_page = cur_page;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) throws IllegalArgumentException {
+		if (price > 0)
+			this.price = price;
+
+		else {
+			throw new IllegalArgumentException("Invalid price:" + price);
+
+		}
+	}
+
+	public String getTITLE() {
+		return TITLE;
+	}
+
+	public String getAUTHOR() {
+		return AUTHOR;
 	}
 
 	public void open() {
 		cur_page = 1;
-		
+
 	}
 
 	public int close() {
@@ -38,7 +75,7 @@ public class Book {
 	}
 
 	public int open(int c) {
-		cur_page = c;		
+		cur_page = c;
 		return c;
 
 	}
@@ -66,17 +103,17 @@ public class Book {
 	public boolean isOpen() {
 		if (cur_page != 0) {
 			return true;
-		} 
-			return false;
-		
+		}
+		return false;
+
 	}
 
 	public boolean isClose() {
 		if (cur_page == 0) {
 			return true;
-		} 
-			return false;
-		
+		}
+		return false;
+
 	}
 
 }
