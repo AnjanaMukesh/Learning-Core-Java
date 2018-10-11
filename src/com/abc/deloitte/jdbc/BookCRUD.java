@@ -70,16 +70,19 @@ public class BookCRUD {
 		Statement st = null;
 
 		try {
-			System.out.println("#########  NEW MEMBER DETAILS ########");
+			System.out.println("#########  AUTHOR  DETAILS ########");
 
 			System.out.print("Name: ");
 			String name = input.readLine();
 
 			System.out.print("Email: ");
 			String email = input.readLine();
+			
+			System.out.print("Mobile: ");
+			String mobile = input.readLine();
 
 			st = con.createStatement();
-			st.executeUpdate("INSERT INTO members VALUES(member_sequence.nextval, '" + name + "', '" + email + "')");
+			st.executeUpdate("INSERT INTO Authors VALUES(member_sequence.nextval, '" + name + "', '" + email + "', '" + mobile + "')");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -99,10 +102,10 @@ public class BookCRUD {
 
 		try {
 			st = con.createStatement();
-			rs = st.executeQuery("SELECT * FROM members");
+			rs = st.executeQuery("SELECT * FROM Authors");
 
 			while (rs.next()) {
-				System.out.println(rs.getInt(1) + " # " + rs.getString(2) + " # " + rs.getString(3));
+				System.out.println(rs.getInt(1) + " # " + rs.getString(2) + " # " + rs.getString(3) + " # " + rs.getString(4)+ " # " + rs.getString(5));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -134,15 +137,19 @@ public class BookCRUD {
 
 			System.out.println("#########  UPDATE MEMBER DETAILS ########");
 			System.out.print("Enter member id to update: ");
-			int memberId = Integer.parseInt(input.readLine());
+			int Author_Id = Integer.parseInt(input.readLine());
 
-			rs = st.executeQuery("SELECT * FROM members WHERE member_id =" + memberId);
+			rs = st.executeQuery("SELECT * FROM Authors WHERE Author_Id =" + Author_Id);
 
 			String oldName = "";
 			String oldEmail = "";
+			String oldMobile = "";
+			String oldDescription = "";
 			if (rs.next()) {
 				oldName = rs.getString(2);
 				oldEmail = rs.getString(3);
+				oldMobile = rs.getString(4);
+				oldDescription = rs.getString(5);
 			}
 
 			System.out.println("Old Name: " + oldName);
@@ -152,6 +159,14 @@ public class BookCRUD {
 			System.out.println("Old Email: " + oldEmail);
 			System.out.print("Enter New Email: ");
 			String email = input.readLine();
+			
+			System.out.println("Old Name: " + oldMobile);
+			System.out.print("Enter New Name: ");
+			String mobile = input.readLine();
+			
+			System.out.println("Old Name: " + oldDescription);
+			System.out.print("Enter New Name: ");
+			String description = input.readLine();
 
 			if (Objects.isNull(name) || name.trim().length() == 0) {
 				name = oldName;
@@ -159,9 +174,15 @@ public class BookCRUD {
 			if (Objects.isNull(email) || email.trim().length() < 10) {
 				email = oldEmail;
 			}
+			if (Objects.isNull(mobile) || mobile.trim().length() < 10) {
+				mobile = oldMobile;
+			}
+			if (Objects.isNull(description) || description.trim().length() > 100) {
+				description = oldDescription;
+			}
 
 			st.executeUpdate("UPDATE members SET name = '" + name + "', email = '" + email + "' WHERE " + "member_id="
-					+ memberId);
+					+ Author_Id);
 
 		} catch (Exception e) {
 			e.printStackTrace();
